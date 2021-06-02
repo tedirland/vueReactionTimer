@@ -3,16 +3,19 @@
 <h1> Ninja Reaction Timer </h1>
 <button @click="start" :disabled="isPlaying"> Play</button>
 <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-<p v-if="score"> Reaction Time: {{score}}ms </p>
+<Results v-if="score" :score="score"  />
+
 </div>
 </template>
 
 <script>
 import Block from './components/Block'
 
+import Results from './components/Results.vue'
+
 export default {
   name: 'App',
-  components: {Block},
+  components: {Block, Results},
   data() {
     return {
       isPlaying: false,
